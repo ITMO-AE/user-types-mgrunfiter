@@ -1,41 +1,4 @@
-# Задача 1.
-Реализовать класс Employee. Объявление в файле employee.h, реализация в employee.cpp. \
-Класс должен содержать приватные поля для хранения:
-* имени
-* фамилии
-* пола
-* возраста
-* категории (число от 0).
-
-Пол сотрудника можно хранить в строковых константах "male"/"female" или завести для этого enum class.\
-Класс должен иметь один констуктор, который принимает 5 параметров (имя, фамилия, пол, возраст, категория), для инициализации полей класса должен использоваться список инициализации.\
-Реализовать методы класса:
-* promote - увеличивает значение поля "категория" на 1
-* demote - уменьшает значение поля "категория" на 1
-* printInfo - выводит всю информацию о работнике в удобном для чтения формате
-
-```cpp
-int main()
-{
-	vector<Employee> umichWorks;
-	// Создайте несколько экземплятов класса Employee и добавьте их в вектор umichWorks
-	
-	cout << endl << "Welcome to umichWorks! Here are our loyal employees: " << endl;
-	for( auto employee:  umichWorks)
-	{
-		employee.printInfo();
-	}
-	// Повысьте категорию одному из работников и понизьте всем остальным
-
-	cout << "Here is the new info for the employees of umichWorks: " << endl;
-	for( auto employee:  umichWorks)
-	{
-		employee.printInfo();
-	}
-	return 0;
-}
-```
-
+/*
 # Задача 2.
 
 Реализуйте класс для человека, поддерживающий историю изменений человеком своих фамилии и имени.
@@ -56,9 +19,7 @@ private:
 };
 ```
 
-Считайте, что в каждый год может произойти не более одного изменения фамилии и не более одного изменения имени. 
-При этом с течением времени могут открываться всё новые факты из прошлого человека, 
-поэтому года́ в последовательных вызовах методов *ChangeLastName* и *ChangeFirstName* не обязаны возрастать.
+Считайте, что в каждый год может произойти не более одного изменения фамилии и не более одного изменения имени. При этом с течением времени могут открываться всё новые факты из прошлого человека, поэтому года́ в последовательных вызовах методов *ChangeLastName* и *ChangeFirstName* не обязаны возрастать.
 
 Гарантируется, что все имена и фамилии непусты.
 
@@ -76,17 +37,17 @@ private:
   for (int year : {1900, 1965, 1990}) {
     cout << person.GetFullName(year) << endl;
   }
-  
+
   person.ChangeFirstName(1970, "Appolinaria");
   for (int year : {1969, 1970}) {
     cout << person.GetFullName(year) << endl;
   }
-  
+
   person.ChangeLastName(1968, "Volkova");
   for (int year : {1969, 1970}) {
     cout << person.GetFullName(year) << endl;
   }
-  
+
   return 0;
 }
 ```
@@ -117,7 +78,7 @@ int main() {
   for (int year : {1959, 1960}) {
     cout << person.GetFullNameWithHistory(year) << endl;
   }
-  
+
   person.ChangeFirstName(1965, "Appolinaria");
   person.ChangeLastName(1967, "Ivanova");
   for (int year : {1965, 1967}) {
@@ -134,9 +95,23 @@ Polina Sergeeva
 Appolinaria (Polina) Sergeeva
 Appolinaria (Polina) Ivanova (Sergeeva)
 ```
-# Дополнительные задачи на STL
-* [Deque](https://www.hackerrank.com/challenges/deque-stl/problem)
-* [Map](https://www.hackerrank.com/challenges/cpp-maps/problem)
-* [Sets](https://www.hackerrank.com/challenges/cpp-sets/problem)
+*/
+#include <iostream>
+#include "person.h"
 
 
+int main()
+{
+    Person person("Polina", "Sergeeva", 1960);
+    for (int year : {1959, 1960}) {
+        std::cout << person.GetFullNameWithHistory(year) << std::endl;
+    }
+
+    person.ChangeFirstName(1965, "Appolinaria");
+    person.ChangeLastName(1967, "Ivanova");
+    for (int year : {1965, 1967}) {
+        std::cout << person.GetFullNameWithHistory(year) << std::endl;
+    }
+
+    return 0;
+}
