@@ -18,9 +18,6 @@ void Person::SortNames()
        }
        i++;
     } while (flag);
-    for (int i = 0; i < vNames.size(); i++) {
-
-    }
 }
 
 int Person::YearFound(int year)
